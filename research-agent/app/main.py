@@ -13,7 +13,7 @@ reader = FileReader(
 )
 
 agent = ResearchAgent(reader)
-answer = agent.ask("What is python")
+answer = agent.answer_questions("What is python")
 print(answer)
 
 #documents = reader.read_files()
