@@ -13,6 +13,8 @@ class ResearchAgent:
 
     def ask(self, question: str) -> str:
         scores = {}
+        top_score = -1
+        best_document = None
         documents = self.reader.read_files()
         print(f"Found {len(documents)} documents.")
         
@@ -26,12 +28,19 @@ class ResearchAgent:
                     score += 5
                 if keyword in document.content.lower():
                     score += 1
-            scores[document.filepath] = score
+            scores[document] = score
 
-        for path, score in scores.items():
-            print(f"{path}: {score}")    
+        for document, score in scores.items():
+            print(f"{document.filename}: {score}") 
+            if score > top_score:
+                top_score = score
+                best_document = document
+        print (f"{best_document.filename} has top score {top_score}")   
 
-        return "yet to be implemented"            
+        if top_score <= 0:
+            return "Sorry, No matching document found."
+        else:    
+            return best_document.content 
     
     def _extract_keywords(self, question: str) -> list[str]:
         useful_words = []

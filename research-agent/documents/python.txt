@@ -1,0 +1,4 @@
+Python is the primary programming language used to develop genai apps
+
+Python supports class
+

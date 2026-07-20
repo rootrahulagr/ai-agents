@@ -1,0 +1,4 @@
+oops stands for object oriented programming language
+
+python supports classes and objects 
+
